@@ -1,113 +1,81 @@
 <!DOCTYPE html>
 <html lang="id">
-<head><style>
-@font-face {
-  font-family: "Optimistic";
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Optimistic Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
-}
-:where(html) {
-  font-family: "Optimistic", system-ui, sans-serif;
-}
-:where(code, pre, kbd, samp) {
-  font-family: "Optimistic Mono", ui-monospace, monospace;
-}
-</style>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KNG ONLINE • Sebening Kaca</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=7">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNGONLINE MUSIC</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome untuk Icon (Opsional, mempermudah icon play, pause, dll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="light">
-  <div class="bg-blobs">
-    <div class="blob blob-blue"></div>
-    <div class="blob blob-purple"></div>
-    <div class="blob blob-cyan"></div>
-  </div>
+<body>
+    <!-- Background visual -->
+    <div class="bg-shape circle-1"></div>
+    <div class="bg-shape circle-2"></div>
 
-  <header class="header">
-    <div class="kng-pill">
-      <div class="wave-icon"><span></span><span></span><span></span><span></span></div>
-      <div class="kng-text"><b>KNG</b> ONLINE</div>
-    </div>
-    <button class="theme-btn" id="themeBtn" title="Ganti Tema">
-      <span class="icon-sun">☀️</span>
-      <span class="icon-moon">🌙</span>
-    </button>
-  </header>
+    <div class="player-container">
+        <!-- Bagian Kiri: Now Playing -->
+        <div class="now-playing glass-panel">
+            <div class="header">
+                <h2>Now Playing</h2>
+            </div>
+            
+            <div class="cover-art">
+                <!-- Ganti src dengan gambar lu di assets/img/ -->
+                <img src="https://via.placeholder.com/300" alt="Cover Art">
+            </div>
 
-  <main class="container">
-    <div class="main-wrapper">
-      <div class="glass now-card">
-        <div class="top-bar">
-          <span class="now-label">Now Playing</span>
-          <div class="window-dots"><span></span><span></span><span></span></div>
-        </div>
-        <div class="album-wrap">
-          <div class="album-art">
-            <img id="coverImg" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&h=600&fit=crop" alt="cover">
-          </div>
-        </div>
-        <div class="song-info">
-          <h1 id="songTitle">DJ Ghost</h1>
-          <p id="songMeta">Justin Bieber • DJ Komang Rimex • 2022</p>
-        </div>
-        <div class="controls">
-          <button class="ctrl-btn" id="shuffleBtn" title="Shuffle Off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg></button>
-          <button class="ctrl-btn" id="prevBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg></button>
-          <button class="play-btn" id="playBtn">
-            <svg class="icon-pause hidden" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-            <svg class="icon-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg>
-          </button>
-          <button class="ctrl-btn" id="nextBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6zM2 6v12l8.5-6L2 6z"/></svg></button>
-          <button class="ctrl-btn" id="repeatBtn" title="Repeat Off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></button>
-        </div>
-        <div class="progress-wrap">
-          <span class="time" id="currentTime">0:00</span>
-          <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill" style="width:0%"><div class="progress-dot"></div></div></div>
-          <span class="time" id="totalTime">0:00</span>
-        </div>
-        <div class="volume-row desktop-only">
-          <span>🔊</span><input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
-        </div>
-      </div>
+            <div class="song-info">
+                <h3>Night Drive</h3>
+                <p>Luma Coast • Chillwave • 2024</p>
+            </div>
 
-      <div class="glass playlist-card">
-        <div class="playlist-header">
-          <h3>Up Next • <span id="playlistCount">5 Songs</span></h3>
-          <button class="add-btn">+</button>
+            <div class="controls">
+                <button><i class="fa-solid fa-shuffle"></i></button>
+                <button><i class="fa-solid fa-backward-step"></i></button>
+                <button class="play-btn" id="playPauseBtn"><i class="fa-solid fa-play"></i></button>
+                <button><i class="fa-solid fa-forward-step"></i></button>
+                <button><i class="fa-solid fa-repeat"></i></button>
+            </div>
+
+            <div class="progress-bar">
+                <span class="time">2:14</span>
+                <input type="range" min="0" max="100" value="50" class="slider">
+                <span class="time">3:42</span>
+            </div>
         </div>
-        <div id="playlist"></div>
-        <div class="playlist-footer">
-          <span>Autoplay • Shuffle <b id="shuffleState">off</b></span>
-          <span id="totalDuration">19:16 total</span>
+
+        <!-- Bagian Kanan: Playlist (Up Next) -->
+        <div class="playlist glass-panel">
+            <div class="header">
+                <h2>Up Next • 12 Songs</h2>
+                <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            
+            <div class="song-list">
+                <!-- Item Lagu Aktif -->
+                <div class="song-item active">
+                    <img src="https://via.placeholder.com/50" alt="Thumb">
+                    <div class="info">
+                        <h4>Neon Harbor</h4>
+                        <p>Luma Coast • 3:12</p>
+                    </div>
+                </div>
+                <!-- Item Lagu Lain -->
+                <div class="song-item">
+                    <img src="https://via.placeholder.com/50" alt="Thumb">
+                    <div class="info">
+                        <h4>Late Night Cruise</h4>
+                        <p>3:58</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="glass share-bar">
-      <div class="share-left">↗ CONNECT & SHARE</div>
-      <div class="share-right">
-        <a href="#" class="share-btn fb">f Facebook</a>
-        <a href="#" class="share-btn msg">💬 Messenger</a>
-        <a href="#" class="share-btn wa">💚 WhatsApp</a>
-      </div>
-    </div>
+    <!-- Elemen Audio Tersembunyi -->
+    <audio id="audioElement" src="assets/audio/lagu-dummy.mp3"></audio>
 
-    <p class="footer-note">KNG ONLINE • Sebening Kaca Glass • Tema Putih & Gelap Elegan</p>
-  </main>
-
-  <audio id="audioPlayer" preload="metadata"></audio>
-  <script src="js/player.js?v=7"></script>
-<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+    <script src="js/script.js"></script>
+</body>
 </html>
