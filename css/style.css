@@ -145,10 +145,7 @@ body::before {
     box-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
 }
 
-/* STYLING BADGE ANGKA 1 KECIL PADA TOMBOL REPEAT */
-.repeat-btn {
-    position: relative;
-}
+.repeat-btn { position: relative; }
 .repeat-badge {
     position: absolute;
     top: -6px;
@@ -162,7 +159,6 @@ body::before {
     line-height: 1;
 }
 
-/* FIX UTAMA GLITCH PROGRESS BAR: Menggunakan min-width tetap pada elemen waktu */
 .progress-container {
     display: flex;
     align-items: center;
@@ -173,7 +169,7 @@ body::before {
 .time {
     font-size: 11px;
     color: #8c9ac2;
-    min-width: 32px;  /* Mencegah teks waktu bergeser saat digit bertambah */
+    min-width: 32px;
     text-align: center;
 }
 .progress-bar {
@@ -191,19 +187,30 @@ body::before {
     border-radius: 2px;
 }
 
+/* BAR VOLUME SEJAJAR & SAMA PANJANG */
 .volume-container {
     display: flex;
     align-items: center;
     gap: 10px;
     width: 100%;
     margin-bottom: 0;
-    padding: 0 5px;
 }
-.volume-container i { color: #8c9ac2; font-size: 12px; }
-.vol-slider {
+.volume-container i { 
+    color: #8c9ac2; 
+    font-size: 12px; 
+    min-width: 32px; 
+    text-align: center;
+}
+.volume-bar-wrapper {
     flex: 1;
+    display: flex;
+    align-items: center;
+}
+.vol-slider {
+    width: 100%;
     accent-color: #0099ff;
     cursor: pointer;
+    height: 4px;
 }
 
 .playlist {
@@ -236,9 +243,7 @@ body::before {
     transition: 0.2s;
     cursor: pointer;
 }
-.song-item:hover {
-    background: rgba(255, 255, 255, 0.07);
-}
+.song-item:hover { background: rgba(255, 255, 255, 0.07); }
 .song-item img {
     width: 38px;
     height: 38px;
@@ -255,13 +260,20 @@ body::before {
 }
 .active-wave { color: #0099ff; font-size: 13px; }
 
+/* FOOTER SHARE & COPYRIGHT */
 .footer-share {
     width: 100%;
     display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px 20px;
+    border-radius: 18px;
+}
+.footer-top-row {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
-    border-radius: 18px;
+    width: 100%;
 }
 .share-main-btn {
     background: rgba(255, 255, 255, 0.08);
@@ -291,11 +303,25 @@ body::before {
 .soc-btn.msg { background: #0099ff; }
 .soc-btn.wa { background: #25d366; }
 
+.footer-copyright {
+    text-align: center;
+    font-size: 11px;
+    color: #8c9ac2;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 10px;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
 @media (max-width: 768px) {
     body { padding: 10px; }
     .player-container { flex-direction: column; }
     .cover-art { width: 180px; height: 180px; }
-    .footer-share { flex-direction: column; gap: 10px; align-items: stretch; }
+    .footer-top-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
     .social-buttons { flex-direction: column; }
     .soc-btn { justify-content: center; padding: 9px; }
 }
