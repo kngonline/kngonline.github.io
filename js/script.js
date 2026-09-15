@@ -2,7 +2,7 @@
 const playlistData = [
     {
         title: "DJ Ghost",
-        artist: "DJ Komang Rimex• Justin Bieber",
+        artist: "DJ Komang Rimex • Justin Bieber",
         duration: "3:47",
         cover: "assets/img/DJ-Komang-Rimex.jpeg",       // Tema Biru
         audio: "assets/mp3/DJ-Komang-DJ-Ghost.mp3"
