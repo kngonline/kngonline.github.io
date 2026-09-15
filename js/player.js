@@ -1,12 +1,12 @@
 const tracks = [
   {
     id: 1,
-    title: "Neon Harbor",
-    artist: "Luma Coast",
-    meta: "Luma Coast • Dream Pop • 2024",
-    duration: "3:12",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    cover: "https://images.unsplash.com/photo-1493244040629-496f6d136cc3?w=600&h=600&fit=crop"
+    title: "DJ Ghost",
+    artist: "Justin Bieber",
+    meta: "Justin Bieber • DJ Komang Rimex • 2022",
+    duration: "3:48",
+    src: "/mp3/DJ-Komang-DJ-Ghost.mp3",
+    cover: "/img/DJ-Komang-Rimex.jpeg"
   },
   {
     id: 2,
