@@ -2,17 +2,17 @@
 const playlistData = [
     {
         title: "DJ Ghost",
-        artist: "DJ Komang Rimex • Justin Bieber",
+        artist: "DJ Komang Rimex • Justin Bieber • 2022",
         duration: "3:47",
-        cover: "assets/img/DJ-Komang-Rimex.jpeg",       // Tema Biru
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
         audio: "assets/mp3/DJ-Komang-DJ-Ghost.mp3"
     },
     {
-        title: "Crimson Sunset",
-        artist: "Luma Coast • Synthwave",
-        duration: "3:58",
-        cover: "assets/img/cover-maroon.jpg",     // Tema Merah Marun
-        audio: "assets/mp3/crimson-sunset.mp3"
+        title: "DJ Night Change",
+        artist: "DJ Komang Rimex • One Direction • 2022",
+        duration: "4:16",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-DJ-Night-Change.mp3"
     },
     {
         title: "Starlight Drift",
