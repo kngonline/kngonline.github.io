@@ -3,79 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KNGONLINE MUSIC</title>
+    <title>KNG ONLINE - Music Player</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Font Awesome untuk Icon (Opsional, mempermudah icon play, pause, dll) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Background visual -->
-    <div class="bg-shape circle-1"></div>
-    <div class="bg-shape circle-2"></div>
 
-    <div class="player-container">
-        <!-- Bagian Kiri: Now Playing -->
-        <div class="now-playing glass-panel">
-            <div class="header">
-                <h2>Now Playing</h2>
-            </div>
-            
-            <div class="cover-art">
-                <!-- Ganti src dengan gambar lu di assets/img/ -->
-                <img src="https://via.placeholder.com/300" alt="Cover Art">
+    <div class="main-wrapper">
+        <!-- Judul Atas -->
+        <div class="top-brand">
+            <i class="fa-solid fa-waveform"></i> <span>KNG ONLINE</span>
+        </div>
+
+        <div class="player-container">
+            <!-- Bagian Kiri: Now Playing -->
+            <div class="now-playing glass-panel">
+                <div class="panel-header">
+                    <h2>Now Playing</h2>
+                    <div class="window-controls">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                
+                <div class="cover-art">
+                    <!-- ID 'currentCover' untuk mendeteksi gambar aktif -->
+                    <img id="currentCover" src="assets/img/cover-blue.jpg" alt="Cover Art">
+                </div>
+
+                <div class="song-info">
+                    <h3 id="songTitle">Night Drive</h3>
+                    <p id="songArtist">Luma Coast • Chillwave • 2024</p>
+                </div>
+
+                <div class="controls">
+                    <button id="shuffleBtn"><i class="fa-solid fa-shuffle"></i></button>
+                    <button id="prevBtn"><i class="fa-solid fa-backward-step"></i></button>
+                    <button class="play-btn" id="playPauseBtn"><i class="fa-solid fa-play"></i></button>
+                    <button id="nextBtn"><i class="fa-solid fa-forward-step"></i></button>
+                    <button id="repeatBtn"><i class="fa-solid fa-repeat"></i></button>
+                </div>
+
+                <div class="progress-container">
+                    <span class="time" id="currentTime">0:00</span>
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-filled" id="progressFilled"></div>
+                    </div>
+                    <span class="time" id="totalDuration">0:00</span>
+                </div>
+
+                <div class="volume-container">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" class="vol-slider">
+                </div>
             </div>
 
-            <div class="song-info">
-                <h3>Night Drive</h3>
-                <p>Luma Coast • Chillwave • 2024</p>
-            </div>
-
-            <div class="controls">
-                <button><i class="fa-solid fa-shuffle"></i></button>
-                <button><i class="fa-solid fa-backward-step"></i></button>
-                <button class="play-btn" id="playPauseBtn"><i class="fa-solid fa-play"></i></button>
-                <button><i class="fa-solid fa-forward-step"></i></button>
-                <button><i class="fa-solid fa-repeat"></i></button>
-            </div>
-
-            <div class="progress-bar">
-                <span class="time">2:14</span>
-                <input type="range" min="0" max="100" value="50" class="slider">
-                <span class="time">3:42</span>
+            <!-- Bagian Kanan: Playlist (Up Next) -->
+            <div class="playlist glass-panel">
+                <div class="panel-header">
+                    <h2>Up Next • <span id="playlistCount">0</span> Songs</h2>
+                    <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                
+                <div class="song-list" id="songListContainer">
+                    <!-- Daftar lagu akan dimuat otomatis via JavaScript -->
+                </div>
             </div>
         </div>
 
-        <!-- Bagian Kanan: Playlist (Up Next) -->
-        <div class="playlist glass-panel">
-            <div class="header">
-                <h2>Up Next • 12 Songs</h2>
-                <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
-            </div>
-            
-            <div class="song-list">
-                <!-- Item Lagu Aktif -->
-                <div class="song-item active">
-                    <img src="https://via.placeholder.com/50" alt="Thumb">
-                    <div class="info">
-                        <h4>Neon Harbor</h4>
-                        <p>Luma Coast • 3:12</p>
-                    </div>
-                </div>
-                <!-- Item Lagu Lain -->
-                <div class="song-item">
-                    <img src="https://via.placeholder.com/50" alt="Thumb">
-                    <div class="info">
-                        <h4>Late Night Cruise</h4>
-                        <p>3:58</p>
-                    </div>
-                </div>
+        <!-- Bagian Footer / Connect & Share Bawah -->
+        <div class="footer-share glass-panel">
+            <button class="share-main-btn">Connect & Share</button>
+            <div class="social-buttons">
+                <a href="#" class="soc-btn fb"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+                <a href="#" class="soc-btn msg"><i class="fa-brands fa-facebook-messenger"></i> Messenger</a>
+                <a href="#" class="soc-btn wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </div>
 
-    <!-- Elemen Audio Tersembunyi -->
-    <audio id="audioElement" src="assets/audio/lagu-dummy.mp3"></audio>
-
+    <!-- Elemen Audio Utama -->
+    <audio id="audioElement"></audio>
     <script src="js/script.js"></script>
 </body>
 </html>
