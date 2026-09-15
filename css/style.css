@@ -33,7 +33,6 @@ body::before {
     z-index: -1;
 }
 
-/* Wrapper Utama */
 .main-wrapper {
     display: flex;
     flex-direction: column;
@@ -44,7 +43,6 @@ body::before {
     z-index: 1;
 }
 
-/* Brand Atas dengan Kotak Kaca Transparan */
 .top-brand {
     font-size: 15px;
     font-weight: 500;
@@ -59,14 +57,12 @@ body::before {
     border-radius: 18px;
 }
 
-/* Container Pemutar Musik (Desktop: Sejajar) */
 .player-container {
     display: flex;
     gap: 15px;
     width: 100%;
 }
 
-/* Efek Glassmorphism Transparan */
 .glass-panel {
     background: rgba(18, 27, 51, 0.4);
     backdrop-filter: blur(15px);
@@ -88,7 +84,6 @@ body::before {
     font-weight: 500;
 }
 
-/* Panel Kiri (Now Playing) */
 .now-playing {
     flex: 1.2;
     display: flex;
@@ -96,7 +91,6 @@ body::before {
     align-items: center;
 }
 
-/* KUNCI UKURAN COVER ART */
 .cover-art {
     width: 200px;
     height: 200px;
@@ -117,11 +111,11 @@ body::before {
 .song-info {
     text-align: center;
     margin-bottom: 12px;
+    width: 100%;
 }
 .song-info h3 { font-size: 18px; font-weight: 600; margin-bottom: 2px; }
 .song-info p { color: #8c9ac2; font-size: 11px; }
 
-/* Tombol Kontrol */
 .controls {
     display: flex;
     align-items: center;
@@ -135,6 +129,7 @@ body::before {
     font-size: 15px;
     cursor: pointer;
     transition: 0.2s;
+    position: relative;
 }
 .controls button:hover { color: #ffffff; }
 .controls .play-btn {
@@ -150,15 +145,37 @@ body::before {
     box-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
 }
 
-/* Progress Bar & Volume */
-.progress-container, .volume-container {
+/* STYLING BADGE ANGKA 1 KECIL PADA TOMBOL REPEAT */
+.repeat-btn {
+    position: relative;
+}
+.repeat-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    font-size: 9px;
+    font-weight: 700;
+    background: #0099ff;
+    color: white;
+    padding: 1px 4px;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+/* FIX UTAMA GLITCH PROGRESS BAR: Menggunakan min-width tetap pada elemen waktu */
+.progress-container {
     display: flex;
     align-items: center;
     gap: 10px;
     width: 100%;
     margin-bottom: 10px;
 }
-.time { font-size: 11px; color: #8c9ac2; }
+.time {
+    font-size: 11px;
+    color: #8c9ac2;
+    min-width: 32px;  /* Mencegah teks waktu bergeser saat digit bertambah */
+    text-align: center;
+}
 .progress-bar {
     flex: 1;
     height: 4px;
@@ -173,7 +190,15 @@ body::before {
     background: #0099ff;
     border-radius: 2px;
 }
-.volume-container { margin-bottom: 0; padding: 0 5px; }
+
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 0 5px;
+}
 .volume-container i { color: #8c9ac2; font-size: 12px; }
 .vol-slider {
     flex: 1;
@@ -181,7 +206,6 @@ body::before {
     cursor: pointer;
 }
 
-/* Panel Kanan (Playlist) */
 .playlist {
     flex: 1;
     display: flex;
@@ -231,7 +255,6 @@ body::before {
 }
 .active-wave { color: #0099ff; font-size: 13px; }
 
-/* Footer Share Bawah */
 .footer-share {
     width: 100%;
     display: flex;
@@ -268,28 +291,11 @@ body::before {
 .soc-btn.msg { background: #0099ff; }
 .soc-btn.wa { background: #25d366; }
 
-/* ===================================================
-   RESPONSIF KHUSUS HP / SMARTPHONE (< 768px)
-   =================================================== */
 @media (max-width: 768px) {
     body { padding: 10px; }
-    .player-container {
-        flex-direction: column;
-    }
-    .cover-art {
-        width: 180px;
-        height: 180px;
-    }
-    .footer-share {
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
-    }
-    .social-buttons {
-        flex-direction: column;
-    }
-    .soc-btn {
-        justify-content: center;
-        padding: 9px;
-    }
+    .player-container { flex-direction: column; }
+    .cover-art { width: 180px; height: 180px; }
+    .footer-share { flex-direction: column; gap: 10px; align-items: stretch; }
+    .social-buttons { flex-direction: column; }
+    .soc-btn { justify-content: center; padding: 9px; }
 }
