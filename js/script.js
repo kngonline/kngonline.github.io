@@ -1,17 +1,17 @@
 const playlistData = [
     {
-        title: "DJ Ghost",
-        artist: "DJ Komang Rimex • Justine Bieber • 2022",
-        duration: "3:47",
-        cover: "assets/img/DJ-Komang-Rimex.jpeg",
-        audio: "assets/mp3/DJ-Komang-DJ-Ghost.mp3"
+        title: "Night Drive",
+        artist: "Luma Coast • Chillwave",
+        duration: "3:42",
+        cover: "assets/img/cover-blue.jpg",
+        audio: "assets/mp3/night-drive.mp3"
     },
     {
-        title: "DJ Night Change",
-        artist: "DJ Komang Rimex • One Direction • 2022",
-        duration: "4:16",
-        cover: "assets/img/DJ-Komang-Rimex.jpeg",
-        audio: "assets/mp3/DJ-Komang-DJ-Night-Change.mp3"
+        title: "Crimson Sunset",
+        artist: "Luma Coast • Synthwave",
+        duration: "3:58",
+        cover: "assets/img/cover-maroon.jpg",
+        audio: "assets/mp3/crimson-sunset.mp3"
     },
     {
         title: "Starlight Drift",
@@ -31,7 +31,7 @@ const playlistData = [
 
 let currentSongIndex = 0;
 let isShuffle = false;
-let repeatMode = 0; // 0 = Repeat Off, 1 = Repeat All, 2 = Repeat 1 Lagu
+let repeatMode = 0; // 0 = Off, 1 = Repeat All, 2 = Repeat 1
 
 const audio = document.getElementById('audioElement');
 const playPauseBtn = document.getElementById('playPauseBtn');
@@ -93,7 +93,7 @@ function playSong() {
     audio.play().then(() => {
         playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
     }).catch(error => {
-        console.log("Autoplay dicegah browser:", error);
+        console.log("Autoplay dibatasi browser:", error);
     });
 }
 
@@ -146,39 +146,33 @@ shuffleBtn.addEventListener('click', () => {
     }
 });
 
-// Tombol Multi-Repeat (0: Off -> 1: Repeat All -> 2: Repeat 1)
+// Tombol Multi-Repeat (0 -> 1 -> 2)
 repeatBtn.addEventListener('click', () => {
     repeatMode = (repeatMode + 1) % 3;
     
     if (repeatMode === 0) {
-        // Repeat Off
         repeatBtn.style.color = '#8c9ac2';
         repeatBtn.style.textShadow = 'none';
         repeatIndicator.style.display = 'none';
     } else if (repeatMode === 1) {
-        // Repeat All (Nyala tanpa angka 1)
         repeatBtn.style.color = '#0099ff';
         repeatBtn.style.textShadow = '0 0 10px rgba(0, 153, 255, 0.6)';
         repeatIndicator.style.display = 'none';
     } else if (repeatMode === 2) {
-        // Repeat 1 (Nyala dengan badge angka 1 kecil)
         repeatBtn.style.color = '#0099ff';
         repeatBtn.style.textShadow = '0 0 10px rgba(0, 153, 255, 0.6)';
         repeatIndicator.style.display = 'block';
     }
 });
 
-// Logika Lagu Habis Berdasarkan Mode Repeat
+// Logika Habis Lagu Berdasarkan Repeat Mode
 audio.addEventListener('ended', () => {
     if (repeatMode === 2) {
-        // Repeat 1 Lagu
         audio.currentTime = 0;
         playSong();
     } else if (repeatMode === 1) {
-        // Repeat Semua Berurutan / Shuffle
         nextSong();
     } else {
-        // Repeat Off (Berhenti jika lagu terakhir habis)
         if (currentSongIndex < playlistData.length - 1) {
             nextSong();
         } else {
@@ -214,4 +208,25 @@ function formatTime(seconds) {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
+// Fitur Tombol Share Sosmed Aktif
+const currentUrl = window.location.href;
+const shareText = "Dengarkan musik keren di KNG ONLINE!";
+
+document.getElementById('shareFB').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+document.getElementById('shareMsg').href = `fb-messenger://share?link=${encodeURIComponent(currentUrl)}`;
+document.getElementById('shareWA').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + " " + currentUrl)}`;
+
+document.getElementById('shareBtn').addEventListener('click', () => {
+    if (navigator.share) {
+        navigator.share({
+            title: 'KNG ONLINE',
+            text: shareText,
+            url: currentUrl,
+        }).catch(() => {});
+    } else {
+        alert("Link web disalin / silakan bagikan: " + currentUrl);
+    }
+});
+
+// Load lagu pertama
 loadSong(currentSongIndex);
