@@ -8,7 +8,6 @@
 }
 
 body {
-    /* Background dinamis otomatis menyesuaikan cover lagu */
     background: url('../img/cover-blue.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #ffffff;
@@ -23,7 +22,6 @@ body {
     transition: background 0.5s ease-in-out;
 }
 
-/* Overlay gelap agar latar belakang agak samar dan teks kontras */
 body::before {
     content: '';
     position: absolute;
@@ -46,7 +44,7 @@ body::before {
     z-index: 1;
 }
 
-/* Brand Atas */
+/* Brand Atas dengan Kotak Kaca Transparan */
 .top-brand {
     font-size: 15px;
     font-weight: 500;
@@ -54,7 +52,11 @@ body::before {
     color: #93b4ff;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 18px;
 }
 
 /* Container Pemutar Musik (Desktop: Sejajar) */
@@ -94,23 +96,12 @@ body::before {
     align-items: center;
 }
 
-.window-controls {
-    display: flex;
-    gap: 6px;
-}
-.window-controls span {
-    width: 7px;
-    height: 7px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-}
-
-/* KUNCI UTAMA UKURAN COVER ART AGAR TIDAK BOCOR/BERANTAKAN */
+/* KUNCI UKURAN COVER ART */
 .cover-art {
     width: 200px;
     height: 200px;
     border-radius: 16px;
-    overflow: hidden; /* Mencegah gambar keluar batas */
+    overflow: hidden;
     margin: 8px 0 12px 0;
     box-shadow: 0 10px 25px rgba(0,0,0,0.6);
     background: #000;
@@ -119,7 +110,7 @@ body::before {
 .cover-art img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Memastikan gambar pas di dalam kotak */
+    object-fit: cover;
     display: block;
 }
 
@@ -283,7 +274,7 @@ body::before {
 @media (max-width: 768px) {
     body { padding: 10px; }
     .player-container {
-        flex-direction: column; /* Otomatis bertumpuk atas-bawah di HP */
+        flex-direction: column;
     }
     .cover-art {
         width: 180px;
