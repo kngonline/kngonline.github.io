@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KNG ONLINE - Music Player</title>
+    <title>KNG MUSIC PLAYER</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <div class="main-wrapper">
-        <!-- Brand Atas Dibungkus Kotak Kaca Transparan -->
         <div class="top-brand glass-panel">
             <i class="fa-solid fa-waveform"></i> <span>KNG ONLINE</span>
         </div>
@@ -36,9 +35,15 @@
                     <button id="prevBtn"><i class="fa-solid fa-backward-step"></i></button>
                     <button class="play-btn" id="playPauseBtn"><i class="fa-solid fa-play"></i></button>
                     <button id="nextBtn"><i class="fa-solid fa-forward-step"></i></button>
-                    <button id="repeatBtn"><i class="fa-solid fa-repeat"></i></button>
+                    
+                    <!-- Tombol Repeat dengan elemen angka '1' kecil -->
+                    <button id="repeatBtn" class="repeat-btn">
+                        <i class="fa-solid fa-repeat"></i>
+                        <span id="repeatIndicator" class="repeat-badge" style="display: none;">1</span>
+                    </button>
                 </div>
 
+                <!-- PROGRESS CONTAINER DIPERBAIKI AGAR TIDAK GLITCH -->
                 <div class="progress-container">
                     <span class="time" id="currentTime">0:00</span>
                     <div class="progress-bar" id="progressBar">
@@ -53,20 +58,17 @@
                 </div>
             </div>
 
-            <!-- Bagian Kanan: Playlist (Up Next) -->
+            <!-- Bagian Kanan: Playlist -->
             <div class="playlist glass-panel">
                 <div class="panel-header">
                     <h2>Up Next • <span id="playlistCount">0</span> Songs</h2>
                     <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 
-                <div class="song-list" id="songListContainer">
-                    <!-- Daftar lagu dimuat via JS -->
-                </div>
+                <div class="song-list" id="songListContainer"></div>
             </div>
         </div>
 
-        <!-- Bagian Footer / Connect & Share Bawah -->
         <div class="footer-share glass-panel">
             <button class="share-main-btn">Connect & Share</button>
             <div class="social-buttons">
@@ -77,7 +79,6 @@
         </div>
     </div>
 
-    <!-- Elemen Audio Utama -->
     <audio id="audioElement"></audio>
     <script src="js/script.js"></script>
 </body>
