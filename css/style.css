@@ -1,16 +1,15 @@
-/* KNGONLINE - ULTRA TRANSPARENT SEBENING KACA */
+/* KNG ONLINE - ULTRA TRANSPARENT SEBENING KACA - FIXED V3 */
 * { margin:0; padding:0; box-sizing:border-box; }
+.hidden { display:none !important; }
 :root {
   --bg: #0a1220;
-  --glass: rgba(255,255,255,0.025);
-  --glass-hover: rgba(255,255,255,0.045);
+  --glass: rgba(255,255,255,0.028);
   --border: rgba(255,255,255,0.07);
-  --border-strong: rgba(255,255,255,0.12);
   --blue: #38bdf8;
 }
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg);
+  background: #0a1220;
   background-image: 
     radial-gradient(ellipse at 20% 30%, rgba(59,130,246,0.12) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.08) 0%, transparent 50%),
@@ -34,14 +33,13 @@ body {
   border-radius:999px; padding:10px 22px;
 }
 .wave-icon { width:26px; height:26px; display:flex; gap:2px; align-items:center; }
-.wave-icon span { width:2px; background: var(--blue); border-radius:2px; }
+.wave-icon span { width:2px; background: var(--blue); border-radius:2px; height:10px; }
 .wave-icon span:nth-child(1){height:8px} span:nth-child(2){height:14px} span:nth-child(3){height:10px} span:nth-child(4){height:12px}
 .kng-text { font-family:'Space Grotesk',sans-serif; letter-spacing:0.18em; font-size:12px; color:#5a6a85; }
 .kng-text b { color: var(--blue); }
 
-.container { position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:0 20px 50px; }
+.container { position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:0 16px 50px; }
 
-/* ULTRA GLASS - sebening kaca */
 .glass {
   background: rgba(255,255,255,0.028);
   backdrop-filter: blur(32px) saturate(160%);
@@ -51,12 +49,12 @@ body {
   border-radius: 20px;
 }
 
-/* MAIN WRAPPER DESKTOP - seperti mockup: 2 card kaca sejajar overlap */
 .main-wrapper {
   position:relative;
   display:flex;
   flex-direction:column;
-  gap:0;
+  gap:16px;
+  width:100%;
 }
 @media (min-width: 900px) {
   .main-wrapper {
@@ -66,11 +64,11 @@ body {
   }
 }
 
-/* Now Playing Card - besar, transparan */
 .now-card {
   flex:1.2;
   padding:18px 20px 20px;
   z-index:2;
+  width:100%;
 }
 @media (min-width: 900px) {
   .now-card { border-radius: 20px 0 0 20px; margin-right:-20px; padding-right:36px; }
@@ -83,19 +81,17 @@ body {
 
 .album-wrap { display:flex; justify-content:center; margin: 6px 0 14px; }
 .album-art {
-  width:100%; max-width:300px; aspect-ratio:1; border-radius:16px; overflow:hidden;
+  width:100%; max-width:320px; aspect-ratio:1; border-radius:16px; overflow:hidden;
   border:1px solid rgba(255,255,255,0.10);
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   position:relative;
 }
-.album-art img { width:100%; height:100%; object-fit:cover; }
-.song-info { text-align:left; margin-top:4px; }
-@media (max-width:899px){ .song-info { text-align:center; } }
+.album-art img { width:100%; height:100%; object-fit:cover; display:block; }
+.song-info { text-align:center; margin-top:8px; }
 .song-info h1 { font-size:22px; font-weight:700; letter-spacing:-0.02em; }
 .song-info p { font-size:11px; color:#5a6a85; margin-top:3px; }
 
-.controls { display:flex; justify-content:flex-start; align-items:center; gap:12px; margin-top:18px; }
-@media (max-width:899px){ .controls { justify-content:center; } }
+.controls { display:flex; justify-content:center; align-items:center; gap:14px; margin-top:18px; }
 .ctrl-btn {
   width:36px; height:36px; border-radius:50%;
   background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
@@ -104,37 +100,36 @@ body {
 }
 .ctrl-btn:hover { background: rgba(255,255,255,0.07); color:#e2e8f0; }
 .play-btn {
-  width:52px; height:52px; border-radius:50%; background: var(--blue); border:none; color:#0a1220;
+  width:56px; height:56px; border-radius:50%; background: var(--blue); border:none; color:#0a1220;
   display:flex; align-items:center; justify-content:center; cursor:pointer;
   box-shadow: 0 0 18px rgba(56,189,248,0.35);
+  position:relative;
 }
-.progress-wrap { display:flex; align-items:center; gap:10px; margin-top:14px; }
-.time { font-size:10px; color:#4a5a75; min-width:28px; }
-.progress-bar { flex:1; height:3px; background: rgba(255,255,255,0.08); border-radius:999px; cursor:pointer; position:relative; }
+.play-btn svg { position:absolute; }
+.progress-wrap { display:flex; align-items:center; gap:10px; margin-top:16px; width:100%; }
+.time { font-size:10px; color:#4a5a75; min-width:28px; font-variant-numeric: tabular-nums; }
+.progress-bar { flex:1; height:4px; background: rgba(255,255,255,0.08); border-radius:999px; cursor:pointer; position:relative; }
 .progress-fill { height:100%; background: var(--blue); border-radius:999px; width:38%; position:relative; }
 .progress-dot { position:absolute; right:-5px; top:50%; transform:translateY(-50%); width:10px; height:10px; background: var(--blue); border:2px solid white; border-radius:50%; }
-.volume-row { display:flex; align-items:center; gap:8px; margin-top:10px; color:#3a4a65; font-size:12px; }
+.volume-row { display:flex; align-items:center; gap:8px; margin-top:12px; color:#3a4a65; font-size:12px; width:100%; }
 .volume-row input { flex:1; accent-color:var(--blue); height:2px; }
 .desktop-only { display:none; }
 @media (min-width:900px){ .desktop-only{display:flex;} }
 
-/* Playlist Card - transparan juga, sejajar di kanan seperti mockup */
 .playlist-card {
   flex:0.9;
   padding:16px;
   z-index:3;
-  margin-top:12px;
+  width:100%;
 }
 @media (min-width:900px){
   .playlist-card {
     margin-top:22px;
-    margin-left:0;
     border-radius: 16px;
     background: rgba(255,255,255,0.032);
     backdrop-filter: blur(32px) saturate(160%);
     -webkit-backdrop-filter: blur(32px) saturate(160%);
     border:1px solid rgba(255,255,255,0.07);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
   }
 }
 
@@ -147,6 +142,7 @@ body {
   background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04);
   border-radius:12px; cursor:pointer; transition: all 0.18s;
   margin-bottom:8px;
+  width:100%;
 }
 .track:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.08); }
 .track.active {
@@ -154,22 +150,22 @@ body {
   border-color: rgba(56,189,248,0.18);
   box-shadow: 0 0 16px rgba(56,189,248,0.10) inset;
 }
-.track-thumb { width:38px; height:38px; border-radius:8px; overflow:hidden; flex-shrink:0; }
-.track-thumb img { width:100%; height:100%; object-fit:cover; }
+.track-thumb { width:42px; height:42px; border-radius:8px; overflow:hidden; flex-shrink:0; background: rgba(255,255,255,0.05); }
+.track-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
 .track-info { flex:1; min-width:0; }
 .track-info b { display:block; font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .track-info span { font-size:10px; color:#5a6a85; }
-.track-time { font-size:10px; color:#4a5a75; }
+.track-time { font-size:10px; color:#4a5a75; flex-shrink:0; }
 
 .playlist-footer { display:flex; justify-content:space-between; margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05); font-size:10px; color:#3a4a65; }
 
-/* Share Bar - juga transparan sebening kaca */
 .share-bar {
   margin-top:22px; padding:12px 16px; border-radius:999px;
   display:flex; flex-direction:column; gap:10px;
   background: rgba(255,255,255,0.025);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border:1px solid rgba(255,255,255,0.06);
+  width:100%;
 }
 @media (min-width:700px){ .share-bar{flex-direction:row; align-items:center; justify-content:space-between; padding:12px 18px;} }
 .share-left { display:flex; align-items:center; gap:8px; font-size:11px; letter-spacing:0.08em; color:#5a6a85; font-weight:600; }
@@ -180,16 +176,17 @@ body {
   border:1px solid rgba(255,255,255,0.10);
   transition: all 0.15s;
 }
-.share-btn:hover { transform: translateY(-1px); filter: brightness(1.1); }
 .share-btn.fb { background: rgba(24,119,242,0.85); }
 .share-btn.msg { background: rgba(140,80,220,0.85); }
 .share-btn.wa { background: rgba(34,180,85,0.85); }
 
 .footer-note { text-align:center; margin-top:16px; font-size:10px; color: rgba(90,106,133,0.4); }
 
-@media (max-width:600px){
+@media (max-width:900px){
   .container{padding:0 14px 30px;}
   .glass{border-radius:16px;}
-  .share-bar{border-radius:16px;}
-  }
-
+  .album-art{max-width:280px;}
+}
+@media (max-width:600px){
+  .share-bar{border-radius:16px; padding:12px 14px;}
+}
