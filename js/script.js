@@ -1,9 +1,9 @@
-// Data Playlist Lagu (Lu bisa tambah atau ganti file mp3 & gambar covernya di sini)
+// Data Playlist Lagu
 const playlistData = [
     {
         title: "DJ Ghost",
         artist: "DJ Komang Rimex • Justin Bieber • 2022",
-        duration: "3:47",
+        duration: "3:48",
         cover: "assets/img/DJ-Komang-Rimex.jpeg",
         audio: "assets/mp3/DJ-Komang-DJ-Ghost.mp3"
     },
@@ -18,19 +18,22 @@ const playlistData = [
         title: "Starlight Drift",
         artist: "Luma Coast • Ambient",
         duration: "4:01",
-        cover: "assets/img/cover-purple.jpg",     // Tema Ungu
+        cover: "assets/img/cover-purple.jpg",
         audio: "assets/mp3/starlight-drift.mp3"
     },
     {
         title: "Ocean Memory",
         artist: "Luma Coast • Deep House",
         duration: "3:25",
-        cover: "assets/img/cover-teal.jpg",       // Tema Hijau Toska
+        cover: "assets/img/cover-teal.jpg",
         audio: "assets/mp3/ocean-memory.mp3"
     }
 ];
 
 let currentSongIndex = 0;
+let isShuffle = false;
+let isRepeat = false;
+
 const audio = document.getElementById('audioElement');
 const playPauseBtn = document.getElementById('playPauseBtn');
 const currentCover = document.getElementById('currentCover');
@@ -43,6 +46,9 @@ const progressBar = document.getElementById('progressBar');
 const currentTimeEl = document.getElementById('currentTime');
 const totalDurationEl = document.getElementById('totalDuration');
 const volumeSlider = document.getElementById('volumeSlider');
+
+const shuffleBtn = document.getElementById('shuffleBtn');
+const repeatBtn = document.getElementById('repeatBtn');
 
 // Inisialisasi Playlist ke HTML
 function initPlaylist() {
@@ -73,7 +79,7 @@ function initPlaylist() {
     });
 }
 
-// Muat Lagu Berdasarkan Index
+// Muat Lagu Pertama / Berdasarkan Index (Tanpa Auto-Play Paksa agar tidak diblokir browser)
 function loadSong(index) {
     const song = playlistData[index];
     songTitle.textContent = song.title;
@@ -81,16 +87,19 @@ function loadSong(index) {
     currentCover.src = song.cover;
     audio.src = song.audio;
     
-    // UBAH BACKGROUND WEBSITE SESUAI COVER ART LAGU SECARA DINAMIS
+    // Ubah background website dinamis sesuai cover art lagu pertama
     document.body.style.backgroundImage = `url('${song.cover}')`;
     
-    initPlaylist(); // Refresh tampilan list aktif
+    initPlaylist();
 }
 
 // Play & Pause Control
 function playSong() {
-    audio.play();
-    playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    audio.play().then(() => {
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    }).catch(error => {
+        console.log("Autoplay dicegah oleh browser, tunggu interaksi user:", error);
+    });
 }
 
 function pauseSong() {
@@ -106,17 +115,65 @@ playPauseBtn.addEventListener('click', () => {
     }
 });
 
-// Tombol Next & Prev
+// Logika Tombol Next
 document.getElementById('nextBtn').addEventListener('click', () => {
-    currentSongIndex = (currentSongIndex + 1) % playlistData.length;
-    loadSong(currentSongIndex);
-    playSong();
+    nextSong();
 });
 
+// Logika Tombol Prev
 document.getElementById('prevBtn').addEventListener('click', () => {
     currentSongIndex = (currentSongIndex - 1 + playlistData.length) % playlistData.length;
     loadSong(currentSongIndex);
     playSong();
+});
+
+// Fungsi Pengatur Lagu Berikutnya (Mendukung Shuffle)
+function nextSong() {
+    if (isShuffle) {
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * playlistData.length);
+        } while (randomIndex === currentSongIndex && playlistData.length > 1);
+        currentSongIndex = randomIndex;
+    } else {
+        currentSongIndex = (currentSongIndex + 1) % playlistData.length;
+    }
+    loadSong(currentSongIndex);
+    playSong();
+}
+
+// Tombol Shuffle (Acak)
+shuffleBtn.addEventListener('click', () => {
+    isShuffle = !isShuffle;
+    if (isShuffle) {
+        shuffleBtn.style.color = '#0099ff';
+        shuffleBtn.style.textShadow = '0 0 10px rgba(0, 153, 255, 0.6)';
+    } else {
+        shuffleBtn.style.color = '#8c9ac2';
+        shuffleBtn.style.textShadow = 'none';
+    }
+});
+
+// Tombol Repeat (Putar Ulang)
+repeatBtn.addEventListener('click', () => {
+    isRepeat = !isRepeat;
+    if (isRepeat) {
+        repeatBtn.style.color = '#0099ff';
+        repeatBtn.style.textShadow = '0 0 10px rgba(0, 153, 255, 0.6)';
+    } else {
+        repeatBtn.style.color = '#8c9ac2';
+        repeatBtn.style.textShadow = 'none';
+    }
+});
+
+// Kondisi ketika sebuah lagu habis
+audio.addEventListener('ended', () => {
+    if (isRepeat) {
+        audio.currentTime = 0;
+        playSong();
+    } else {
+        nextSong();
+    }
 });
 
 // Update Progress Bar & Waktu Audio
@@ -125,13 +182,12 @@ audio.addEventListener('timeupdate', () => {
         const progressPercent = (audio.currentTime / audio.duration) * 100;
         progressFilled.style.width = `${progressPercent}%`;
         
-        // Format waktu berjalan
         currentTimeEl.textContent = formatTime(audio.currentTime);
         totalDurationEl.textContent = formatTime(audio.duration);
     }
 });
 
-// Klik pada progress bar untuk lompat waktu lagu
+// Klik pada progress bar untuk lompat waktu
 progressBar.addEventListener('click', (e) => {
     const width = progressBar.clientWidth;
     const clickX = e.offsetX;
@@ -150,12 +206,5 @@ function formatTime(seconds) {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// Otomatis lanjut ke lagu berikutnya kalau habis
-audio.addEventListener('ended', () => {
-    currentSongIndex = (currentSongIndex + 1) % playlistData.length;
-    loadSong(currentSongIndex);
-    playSong();
-});
-
-// Jalankan saat pertama kali dibuka
+// Load otomatis lagu pertama saat web dibuka pertama kali
 loadSong(currentSongIndex);
