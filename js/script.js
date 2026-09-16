@@ -1,31 +1,94 @@
 const playlistData = [
-    {
-        title: "Night Drive",
-        artist: "Luma Coast • Chillwave",
-        duration: "3:42",
-        cover: "assets/img/cover-blue.jpg",
-        audio: "assets/mp3/night-drive.mp3"
+   {
+        title: "Angel Baby",
+        artist: "DJ Komang Rimex • Troye Sivan",
+        duration: "4:24",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Angel-Baby.mp3"
     },
     {
-        title: "Crimson Sunset",
-        artist: "Luma Coast • Synthwave",
-        duration: "3:58",
-        cover: "assets/img/cover-maroon.jpg",
-        audio: "assets/mp3/crimson-sunset.mp3"
+        title: "APT.",
+        artist: "DJ Komang Rimex • Rose ft Bruno Mars",
+        duration: "4:22",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-APT.mp3"
     },
     {
-        title: "Starlight Drift",
-        artist: "Luma Coast • Ambient",
+        title: "Ghost",
+        artist: "DJ Komang Rimex • Justin Bieber",
+        duration: "3:47",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-DJ-Ghost.mp3"
+    },
+    {
+        title: "Hold On",
+        artist: "DJ Komang Rimex • Chord Overstreet",
+        duration: "4:21",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Hold-On.mp3"
+    },
+    {
+        title: "I Don't Know Why",
+        artist: "DJ Komang Rimex • Moony, Alessandro Viale, DJ Ross",
+        duration: "4:27",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-I-Dont-Know-Why.mp3"
+    },
+    {
+        title: "Last Friday Night (T.G.I.F.)",
+        artist: "DJ Komang Rimex • Katy Perry",
+        duration: "4:02",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Last-Friday-Night.mp3"
+    },
+    {
+        title: "Let Her GO",
+        artist: "DJ Komang Rimex • Passager",
         duration: "4:01",
-        cover: "assets/img/cover-purple.jpg",
-        audio: "assets/mp3/starlight-drift.mp3"
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Let-Her-Go.mp3"
     },
     {
-        title: "Ocean Memory",
-        artist: "Luma Coast • Deep House",
-        duration: "3:25",
-        cover: "assets/img/cover-teal.jpg",
-        audio: "assets/mp3/ocean-memory.mp3"
+        title: "Night Change",
+        artist: "DJ Komang Rimex • One Direction",
+        duration: "4:15",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-DJ-Night-Change.mp3"
+    },
+    {
+        title: "Silence",
+        artist: "DJ Komang Rimex • Marshmello, Khalid",
+        duration: "4:12",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Silence.mp3"
+    },
+    {
+        title: "Starship",
+        artist: "DJ Komang Rimex • Nicki Minaj",
+        duration: "4:01",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Starship.mp3"
+    },
+    {
+        title: "Strong",
+        artist: "DJ Komang Rimex • One Direction",
+        duration: "4:01",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Strong.mp3"
+    },
+    {
+        title: "Teenage Monalisa",
+        artist: "DJ Komang Rimex • Alfie Castley",
+        duration: "4:08",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Teenage-Monalisa.mp3"
+    },
+    {
+        title: "Wrecking Ball",
+        artist: "DJ Komang Rimex • Miley Cyrus",
+        duration: "4:30",
+        cover: "assets/img/DJ-Komang-Rimex.jpeg",
+        audio: "assets/mp3/DJ-Komang-Rimex-DJ-Wrecking-Ball.mp3"
     }
 ];
 
