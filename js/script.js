@@ -93,7 +93,7 @@ function playSong() {
     audio.play().then(() => {
         playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
     }).catch(error => {
-        console.log("Autoplay dibatasi browser:", error);
+        console.log("Autoplay dicegah browser:", error);
     });
 }
 
@@ -165,7 +165,7 @@ repeatBtn.addEventListener('click', () => {
     }
 });
 
-// Logika Habis Lagu Berdasarkan Repeat Mode
+// Logika Habis Lagu
 audio.addEventListener('ended', () => {
     if (repeatMode === 2) {
         audio.currentTime = 0;
@@ -208,7 +208,7 @@ function formatTime(seconds) {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// Fitur Tombol Share Sosmed Aktif
+// Share Sosmed Aktif
 const currentUrl = window.location.href;
 const shareText = "Dengarkan musik keren di KNG ONLINE!";
 
@@ -228,5 +228,4 @@ document.getElementById('shareBtn').addEventListener('click', () => {
     }
 });
 
-// Load lagu pertama
 loadSong(currentSongIndex);
