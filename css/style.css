@@ -159,6 +159,7 @@ body::before {
     line-height: 1;
 }
 
+/* PROGRESS BAR METER LAGU */
 .progress-container {
     display: flex;
     align-items: center;
@@ -172,8 +173,13 @@ body::before {
     min-width: 32px;
     text-align: center;
 }
-.progress-bar {
+.progress-bar-wrapper {
     flex: 1;
+    display: flex;
+    align-items: center;
+}
+.progress-bar {
+    width: 100%;
     height: 4px;
     background: rgba(255,255,255,0.1);
     border-radius: 2px;
@@ -187,7 +193,7 @@ body::before {
     border-radius: 2px;
 }
 
-/* BAR VOLUME SEJAJAR & SAMA PANJANG */
+/* VOLUME CONTAINER DISETTING PERSIS SEJAJAR DENGAN PROGRESS BAR DI ATASNYA */
 .volume-container {
     display: flex;
     align-items: center;
@@ -211,6 +217,22 @@ body::before {
     accent-color: #0099ff;
     cursor: pointer;
     height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #0099ff;
+    cursor: pointer;
+}
+/* Spacer kosong penyeimbang di sebelah kanan agar panjang bar volume plek sejajar presisi */
+.volume-spacer {
+    min-width: 32px;
 }
 
 .playlist {
@@ -260,7 +282,7 @@ body::before {
 }
 .active-wave { color: #0099ff; font-size: 13px; }
 
-/* FOOTER SHARE & COPYRIGHT */
+/* FOOTER */
 .footer-share {
     width: 100%;
     display: flex;
